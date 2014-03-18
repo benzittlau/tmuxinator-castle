@@ -40,6 +40,11 @@ windows:
         panes:
             - vim -c "cd chef"
             - cd chef
+    - db_seed:
+        layout: 5d2f,179x79,0,0[179x56,0,0,2,179x22,0,57,8]
+        panes:
+            - vim -c "cd db_seed"
+            - cd db_seed
     - admin:
         layout: 5d2f,179x79,0,0[179x56,0,0,2,179x22,0,57,8]
         panes:
