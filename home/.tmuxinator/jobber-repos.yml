@@ -1,0 +1,68 @@
+# ~/.tmuxinator/jobber-repos.yml
+
+name: jobber-repos
+root: ~/jobber
+
+# Optional tmux socket
+# socket_name: foo
+
+# Runs before everything. Use it to start daemons etc.
+# pre: sudo /etc/rc.d/mysqld start
+
+# Runs in each window and pane before window/pane specific commands. Useful for setting up interpreter versions.
+# pre_window: export TERM="xterm-256color"
+
+# Pass command line options to tmux. Useful for specifying a different tmux.conf.
+tmux_options: -f ~/.tmux.conf
+
+windows:
+    - tools:
+        panes:
+            - cd Jobber && zeus start
+            - sleep 5 && cd Jobber && zeus server
+            - cd website && rails s
+            - cd Jobber && bin/delayed_job -n 1 run
+    - jobber:
+        layout: 5d2f,179x79,0,0[179x56,0,0,2,179x22,0,57,8]
+        panes:
+            - cd Jobber && vim
+            - cd Jobber
+    - ascend:
+        layout: 5d2f,179x79,0,0[179x56,0,0,2,179x22,0,57,8]
+        panes:
+            - cd ascend && vim
+            - cd ascend
+    - website:
+        layout: 5d2f,179x79,0,0[179x56,0,0,2,179x22,0,57,8]
+        panes:
+            - cd website && vim
+            - cd website
+    - WebsiteContent:
+        layout: 5d2f,179x79,0,0[179x56,0,0,2,179x22,0,57,8]
+        panes:
+            - cd WebsiteContent && vim
+            - cd WebsiteContent
+    - jobber-for-iOS:
+        layout: 5d2f,179x79,0,0[179x56,0,0,2,179x22,0,57,8]
+        panes:
+            - cd jobber-for-iOS && vim
+            - cd jobber-for-iOS
+    - jobber-for-android:
+        layout: 5d2f,179x79,0,0[179x56,0,0,2,179x22,0,57,8]
+        panes:
+            - cd jobber-for-android && vim
+            - cd jobber-for-android
+    - jobber_loc:
+        layout: 5d2f,179x79,0,0[179x56,0,0,2,179x22,0,57,8]
+        panes:
+            - cd jobber_loc && vim
+            - cd jobber_loc
+    - jobber-hubot:
+        layout: 5d2f,179x79,0,0[179x56,0,0,2,179x22,0,57,8]
+        panes:
+            - cd jobber-hubot && vim
+            - cd jobber-hubot
+    - database:
+        panes:
+            - psql -d 'jobber_test'
+            - psql -d 'jobber_prod'

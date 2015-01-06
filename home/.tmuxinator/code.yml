@@ -1,0 +1,25 @@
+# ~/.tmuxinator/code.yml
+
+name: code
+project_root: .
+
+# Optional tmux socket
+# socket_name: foo
+
+# Runs before everything. Use it to start daemons etc.
+# pre: sudo /etc/rc.d/mysqld start
+
+# Runs in each window and pane before window/pane specific commands. Useful for setting up interpreter versions.
+# pre_window: export TERM="xterm-256color"
+
+# Pass command line options to tmux. Useful for specifying a different tmux.conf.
+tmux_options: -f ~/.tmux.conf
+
+windows:
+    - code:
+        layout: 5d2f,179x79,0,0[179x56,0,0,2,179x22,0,57,8]
+        panes:
+          - vim:
+            - vim
+          - console:
+            - cd .
